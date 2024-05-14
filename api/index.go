@@ -1,14 +1,11 @@
 package indexhandler
 
 import (
-	"fmt"
 	"net/http"
-	"strings"
 )
 
+const repoURL = "https://github.com/RangHo/jumpstart"
+
 func Handler(w http.ResponseWriter, r *http.Request) {
-	paths := strings.Split(r.URL.Path, "/")
-	for _, path := range paths {
-		fmt.Fprintf(w, "Path: %s\n", path)
-	}
+	http.Redirect(w, r, repoURL, http.StatusTemporaryRedirect)
 }
