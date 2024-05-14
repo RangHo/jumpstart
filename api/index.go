@@ -1,4 +1,4 @@
-package index
+package indexhandler
 
 import (
 	"fmt"
