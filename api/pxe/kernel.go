@@ -3,7 +3,7 @@ package pxekernelhandler
 import (
 	"net/http"
 
-	"github.com/RangHo/jumpstart/internal/artifact"
+	"github.com/RangHo/jumpstart/pkg/artifact"
 )
 
 func Handler(w http.ResponseWriter, r *http.Request) {

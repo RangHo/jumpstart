@@ -5,7 +5,7 @@ import (
 	"io"
 	"net/http"
 
-	"github.com/RangHo/jumpstart/internal/version"
+	"github.com/RangHo/jumpstart/pkg/version"
 )
 
 // Base URL for fetching the latest Fedora CoreOS stream metadata
