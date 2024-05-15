@@ -1,4 +1,4 @@
-package pxekernelhandler
+package pxehandler
 
 import (
 	"net/http"
@@ -6,7 +6,7 @@ import (
 	"github.com/RangHo/jumpstart/pkg/artifact"
 )
 
-func Handler(w http.ResponseWriter, r *http.Request) {
+func KernelHandler(w http.ResponseWriter, r *http.Request) {
 	// Get the stream and architecture from the parameters
 	stream := r.URL.Query().Get("stream")
 	architecture := r.URL.Query().Get("arch")
