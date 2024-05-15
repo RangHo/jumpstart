@@ -35,10 +35,10 @@ func getArtifacts(stream string) ([]version.Artifact, error) {
 	return parsed, nil
 }
 
-func getPXE(stream string, architecture string, format string) (string, error) {
-	// Validate the stream-arch pair
+func FindArtifact(stream string, architecture string, format string) (string, error) {
+	// Validate the stream and architecture
 	if !version.Validate(stream, architecture) {
-		return "", fmt.Errorf("Invalid stream-arch pair: %s-%s", stream, architecture)
+		return "", fmt.Errorf("Invalid stream or architecture")
 	}
 
 	// Fetch the artifacts
@@ -54,17 +54,5 @@ func getPXE(stream string, architecture string, format string) (string, error) {
 		}
 	}
 
-	return "", fmt.Errorf("Requested file not found for %s-%s", stream, architecture)
-}
-
-func GetKernel(stream string, architecture string) (string, error) {
-	return getPXE(stream, architecture, version.PXE + "-kernel")
-}
-
-func GetInitramfs(stream string, architecture string) (string, error) {
-	return getPXE(stream, architecture, version.PXE + "-initramfs")
-}
-
-func GetRootfs(stream string, architecture string) (string, error) {
-	return getPXE(stream, architecture, version.PXE + "-rootfs")
+	return "", fmt.Errorf("Artifact not found")
 }

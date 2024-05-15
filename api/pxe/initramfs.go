@@ -4,14 +4,14 @@ import (
 	"net/http"
 
 	"github.com/RangHo/jumpstart/pkg/artifact"
+	"github.com/RangHo/jumpstart/pkg/version"
 )
 
 func InitramfsHandler(w http.ResponseWriter, r *http.Request) {
-	// Get the stream and architecture from the parameters
 	stream := r.URL.Query().Get("stream")
 	architecture := r.URL.Query().Get("arch")
 
-	url, err := artifact.GetInitramfs(stream, architecture)
+	url, err := artifact.FindArtifact(stream, architecture, version.PXE + "-initramfs")
 	if err != nil {
 		http.Error(w, err.Error(), http.StatusNotFound)
 		return
