@@ -249,7 +249,7 @@ func HandleArtifact(w http.ResponseWriter, r *http.Request, format string) {
 	// Find the artifact
 	artifact, err := FindArtifact(stream, architecture, format)
 	if err != nil {
-		http.Error(w, err.Error(), http.StatusNotFound)
+		http.Error(w, err.Error(), http.StatusBadRequest)
 		return
 	}
 
