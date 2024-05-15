@@ -27,10 +27,15 @@ func getArtifacts(stream string) ([]version.Artifact, error) {
 	}
 
 	// Parse the content
-	return version.Parse(body), nil
+	parsed, err := version.Parse(body)
+	if err != nil {
+		return nil, err
+	}
+
+	return parsed, nil
 }
 
-func getPXE(stream string, architecture string, imageType string) (string, error) {
+func getPXE(stream string, architecture string, format string) (string, error) {
 	// Validate the stream-arch pair
 	if !version.Validate(stream, architecture) {
 		return "", fmt.Errorf("Invalid stream-arch pair: %s-%s", stream, architecture)
@@ -44,8 +49,8 @@ func getPXE(stream string, architecture string, imageType string) (string, error
 
 	// Find the artifact
 	for _, artifact := range artifacts {
-		if artifact.Architecture == architecture && artifact.Type == imageType {
-			return artifact.Content.Location, nil
+		if artifact.Architecture == architecture && artifact.Format == format {
+			return artifact.ContentURL, nil
 		}
 	}
 
