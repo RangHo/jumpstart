@@ -35,7 +35,7 @@ func getArtifacts(stream string) ([]version.Artifact, error) {
 	return parsed, nil
 }
 
-func FindArtifact(stream string, architecture string, format string) (string, error) {
+func Find(stream string, architecture string, format string) (string, error) {
 	// Validate the stream and architecture
 	if !version.Validate(stream, architecture) {
 		return "", fmt.Errorf("Invalid stream or architecture")
@@ -55,4 +55,19 @@ func FindArtifact(stream string, architecture string, format string) (string, er
 	}
 
 	return "", fmt.Errorf("Artifact not found")
+}
+
+func Handle(w http.ResponseWriter, r *http.Request, format string) {
+	stream := r.URL.Query().Get("stream")
+	architecture := r.URL.Query().Get("architecture")
+
+	// Find the artifact
+	url, err := Find(stream, architecture, format)
+	if err != nil {
+		http.Error(w, err.Error(), http.StatusNotFound)
+		return
+	}
+
+	// Redirect to the artifact
+	http.Redirect(w, r, url, http.StatusTemporaryRedirect)
 }

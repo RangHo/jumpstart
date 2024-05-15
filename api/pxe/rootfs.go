@@ -8,14 +8,6 @@ import (
 )
 
 func RootfsHandler(w http.ResponseWriter, r *http.Request) {
-	stream := r.URL.Query().Get("stream")
-	architecture := r.URL.Query().Get("arch")
+	artifact.Handle(w, r, version.PXE+"-rootfs")
 
-	url, err := artifact.FindArtifact(stream, architecture, version.PXE + "-rootfs")
-	if err != nil {
-		http.Error(w, err.Error(), http.StatusNotFound)
-		return
-	}
-
-	http.Redirect(w, r, url, http.StatusTemporaryRedirect)
 }

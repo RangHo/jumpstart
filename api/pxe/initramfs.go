@@ -8,14 +8,5 @@ import (
 )
 
 func InitramfsHandler(w http.ResponseWriter, r *http.Request) {
-	stream := r.URL.Query().Get("stream")
-	architecture := r.URL.Query().Get("arch")
-
-	url, err := artifact.FindArtifact(stream, architecture, version.PXE + "-initramfs")
-	if err != nil {
-		http.Error(w, err.Error(), http.StatusNotFound)
-		return
-	}
-
-	http.Redirect(w, r, url, http.StatusTemporaryRedirect)
+	artifact.Handle(w, r, version.PXE+"-initramfs")
 }
