@@ -1,0 +1,12 @@
+# -*- mode: yaml -*-
+
+variant: fcos
+version: 1.5.0
+
+passwd:
+  users:
+    - name: {{ .Name }}
+      ssh_authorized_keys:
+        {{ range .Keys }}
+        - {{ . }}
+        {{ end }}
