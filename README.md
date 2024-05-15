@@ -32,3 +32,12 @@ Replace the `<arch>` placeholder with one of:
 - `aarch64` for ARM-powered devices such as Raspberry Pi;
 - `s390x` for IBM Cloud and zSystems;
 - `ppc64le` for IBM PowerPC systems.
+
+### User Management
+
+These endpoints provide a dynamic user definition that allows user provisioning without manual copying of values.
+All user-related endpoints reside in the `/passwd` subpath.
+
+| Endpoint                              | Description                                                                                                                                              |
+|---------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------|
+| `/passwd/from-github?user=<username>` | Creates the `core` user with the same SSH keys that the given GitHub user uses to authenticate on GitHub. Replace `<username>` with the GitHub username. |
