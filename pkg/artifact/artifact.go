@@ -59,7 +59,7 @@ func Find(stream string, architecture string, format string) (string, error) {
 
 func Handle(w http.ResponseWriter, r *http.Request, format string) {
 	stream := r.URL.Query().Get("stream")
-	architecture := r.URL.Query().Get("architecture")
+	architecture := r.URL.Query().Get("arch")
 
 	// Find the artifact
 	url, err := Find(stream, architecture, format)
