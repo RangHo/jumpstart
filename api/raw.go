@@ -3,10 +3,9 @@ package handler
 import (
 	"net/http"
 
-	"github.com/RangHo/jumpstart/pkg/artifact"
-	"github.com/RangHo/jumpstart/pkg/version"
+	"github.com/RangHo/jumpstart"
 )
 
 func RawHandler(w http.ResponseWriter, r *http.Request) {
-	artifact.Handle(w, r, version.Raw)
+	jumpstart.HandleArtifact(w, r, jumpstart.Raw)
 }
