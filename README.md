@@ -30,7 +30,7 @@ Replace the `<arch>` placeholder with one of:
 
 - `x86_64` for most computers with Intel or AMD processors;
 - `aarch64` for ARM-powered devices such as Raspberry Pi;
-- `s390x` for IBM Cloud and zSystems;
+- `s390x` for IBM Cloud and zSystems; or
 - `ppc64le` for IBM PowerPC systems.
 
 ### User Management
