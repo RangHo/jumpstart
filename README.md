@@ -4,13 +4,31 @@
 
 ## Available Endpoints
 
-### PXE Netboot
+### Image Shortcuts
 
 These endpoints provide an easy, semi-frozen URLs to the latest CoreOS images.
 It can be used to provision a bare-metal nodes, and is especially useful to reprovision a single-node CoreOS installation.
+Each image endpoints requires two parameters: `stream` and `arch`.
 
-| Endpoint                                  | Description                                                                                                                                                                                                      |
-|-------------------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| `/pxe/kernel?stream=<stream>&arch=<arch>` | Redirects to the latest PXE kernel image for the specified _stream_ and _arch_ pair. `<stream>` can be one of `stable`, `testing`, or `next`; `<arch>` can be one of `x86_64`, `aarch64`, `s390x`, or `ppc64le`. |
-| `/pxe/rootfs?stream=<stream>&arch=<arch>` | Redirects to the latest PXE rootfs image for the specified _stream_ and _arch_ pair. `<stream>` can be one of `stable`, `testing`, or `next`; `<arch>` can be one of `x86_64`, `aarch64`, `s390x`, or `ppc64le`. |
-| `/pxe/initramfs?stream=<stream>&arch=<arch>` | Redirects to the latest PXE initramfs image for the specified _stream_ and _arch_ pair. `<stream>` can be one of `stable`, `testing`, or `next`; `<arch>` can be one of `x86_64`, `aarch64`, `s390x`, or `ppc64le`. |
+| Endpoint                                          | Description                                                                             |
+|---------------------------------------------------|-----------------------------------------------------------------------------------------|
+| `/raw?stream=<stream>&arch=<arch>`                | Redirects to the latest raw `.tar.xz` image for the specified _stream_ and _arch_ pair. |
+| `/iso?stream=<stream>&arch=<arch>`                | Redirects to the latest ISO image for the specified _stream_ and _arch_ pair.           |
+| `/pxe/kernel?stream=<stream>&architecture=<arch>` | Redirects to the latest PXE kernel image for the specified _stream_ and _arch_ pair.    |
+| `/pxe/rootfs?stream=<stream>&arch=<arch>`         | Redirects to the latest PXE rootfs image for the specified _stream_ and _arch_ pair.    |
+| `/pxe/initramfs?stream=<stream>&arch=<arch>`      | Redirects to the latest PXE initramfs image for the specified _stream_ and _arch_ pair. |
+
+`stream` parameter specifies the release stream.
+Replace the `<stream>` placeholder with one of:
+
+- `stable` for the most reliable version of CoreOS;
+- `testing` for the next stable release candidate; or
+- `next` for the "bleeding edge" release.
+
+`arch` parameter specifies the target CPU architecture.
+Replace the `<arch>` placeholder with one of:
+
+- `x86_64` for most computers with Intel or AMD processors;
+- `aarch64` for ARM-powered devices such as Raspberry Pi;
+- `s390x` for IBM Cloud and zSystems;
+- `ppc64le` for IBM PowerPC systems.
