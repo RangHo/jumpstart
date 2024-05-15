@@ -1,4 +1,4 @@
-package passwdhandler
+package api
 
 import (
 	"net/http"

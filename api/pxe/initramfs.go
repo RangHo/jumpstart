@@ -1,4 +1,4 @@
-package pxehandler
+package api
 
 import (
 	"net/http"
