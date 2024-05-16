@@ -1,11 +1,11 @@
-package pxe
+package api
 
 import (
 	"net/http"
 
-	"github.com/RangHo/jumpstart"
+	"github.com/RangHo/jumpstart/pkg/handler"
 )
 
 func KernelHandler(w http.ResponseWriter, r *http.Request) {
-	jumpstart.HandleArtifact(w, r, jumpstart.PXE+"-kernel")
+	handler.HandleArtifact(w, r, "pxe-kernel")
 }

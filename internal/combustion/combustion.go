@@ -1,4 +1,4 @@
-package jumpstart
+package combustion
 
 import (
 	"github.com/coreos/butane/config"

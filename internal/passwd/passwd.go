@@ -1,4 +1,4 @@
-package jumpstart
+package passwd
 
 import (
 	"bytes"
@@ -8,11 +8,13 @@ import (
 	"net/http"
 	"strings"
 	"text/template"
+
+	"github.com/RangHo/jumpstart/internal/combustion"
 )
 
 // passwdFromGithubBuTmpl is the Butane template for the passwd-from-github.bu config.
 //
-//go:embed configs/passwd-from-github.bu.tmpl
+//go:embed templates/from-github.bu.tmpl
 var passwdFromGithubBuTmpl []byte
 
 // passwdFromGitHubData is the data structure for the passwd-from-github.bu config.
@@ -55,5 +57,5 @@ func MakePasswdFromGitHub(name string) ([]byte, error) {
 		return []byte{}, err
 	}
 
-	return Ignite(buf.Bytes())
+	return combustion.Ignite(buf.Bytes())
 }

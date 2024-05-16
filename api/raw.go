@@ -3,9 +3,9 @@ package api
 import (
 	"net/http"
 
-	"github.com/RangHo/jumpstart"
+	"github.com/RangHo/jumpstart/pkg/handler"
 )
 
 func RawHandler(w http.ResponseWriter, r *http.Request) {
-	jumpstart.HandleArtifact(w, r, jumpstart.Raw)
+	handler.HandleArtifact(w, r, "raw.xz")
 }

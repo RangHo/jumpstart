@@ -1,19 +1,20 @@
-package user
+package handler
 
 import (
 	"net/http"
 
-	"github.com/RangHo/jumpstart"
+	"github.com/RangHo/jumpstart/internal/passwd"
 )
 
-func PasswdFromGitHubHandler(w http.ResponseWriter, r *http.Request) {
+// HandlePasswdFromGitHub handles the request for a password file generated from a GitHub username.
+func HandlePasswdFromGitHub(w http.ResponseWriter, r *http.Request) {
 	name := r.URL.Query().Get("name")
 	if name == "" {
 		http.Error(w, "name is required", http.StatusBadRequest)
 		return
 	}
 
-	ignition, err := jumpstart.MakePasswdFromGitHub(name)
+	ignition, err := passwd.MakePasswdFromGitHub(name)
 	if err != nil {
 		http.Error(w, err.Error(), http.StatusInternalServerError)
 		return

@@ -1,11 +1,11 @@
-package pxe
+package api
 
 import (
 	"net/http"
 
-	"github.com/RangHo/jumpstart"
+	"github.com/RangHo/jumpstart/pkg/handler"
 )
 
 func RootfsHandler(w http.ResponseWriter, r *http.Request) {
-	jumpstart.HandleArtifact(w, r, jumpstart.PXE+"-rootfs")
+	handler.HandleArtifact(w, r, "pxe-rootfs")
 }

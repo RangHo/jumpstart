@@ -1,4 +1,4 @@
-package jumpstart
+package artifact
 
 import (
 	"encoding/json"
@@ -237,22 +237,4 @@ func FindArtifact(stream string, architecture string, format string) (Artifact, 
 	}
 
 	return Artifact{}, fmt.Errorf("Artifact not found")
-}
-
-// HandleArtifact handles the request for a specific format of artifact.
-//
-// To use this function, define a specialized handler function that calls this function with the format string.
-func HandleArtifact(w http.ResponseWriter, r *http.Request, format string) {
-	stream := r.URL.Query().Get("stream")
-	architecture := r.URL.Query().Get("arch")
-
-	// Find the artifact
-	artifact, err := FindArtifact(stream, architecture, format)
-	if err != nil {
-		http.Error(w, err.Error(), http.StatusBadRequest)
-		return
-	}
-
-	// Redirect to the artifact
-	http.Redirect(w, r, artifact.ContentURL, http.StatusTemporaryRedirect)
 }

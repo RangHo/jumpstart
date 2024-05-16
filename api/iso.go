@@ -3,9 +3,9 @@ package api
 import (
 	"net/http"
 
-	"github.com/RangHo/jumpstart"
+	"github.com/RangHo/jumpstart/pkg/handler"
 )
 
 func ISOHandler(w http.ResponseWriter, r *http.Request) {
-	jumpstart.HandleArtifact(w, r, jumpstart.ISO)
+	handler.HandleArtifact(w, r, "iso")
 }
