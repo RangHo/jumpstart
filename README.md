@@ -40,4 +40,4 @@ All user-related endpoints reside in the `/passwd` subpath.
 
 | Endpoint                              | Description                                                                                                                                              |
 |---------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------|
-| `/passwd/from-github?user=<username>` | Creates the `core` user with the same SSH keys that the given GitHub user uses to authenticate on GitHub. Replace `<username>` with the GitHub username. |
+| `/passwd/from-github?name=<username>` | Creates the `core` user with the same SSH keys that the given GitHub user uses to authenticate on GitHub. Replace `<username>` with the GitHub username. |
