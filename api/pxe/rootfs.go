@@ -1,4 +1,4 @@
-package api
+package pxe
 
 import (
 	"net/http"
